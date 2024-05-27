@@ -1,0 +1,5 @@
+{"level":"info","message":"GET /api/auth/login ::1","timestamp":"2024-05-27T10:08:45.843Z"}
+{"level":"info","message":"GET /health ::1","timestamp":"2024-05-27T10:09:02.711Z"}
+{"level":"info","message":"GET /health ::1","timestamp":"2024-05-27T10:09:37.548Z"}
+{"level":"info","message":"GET / ::1","timestamp":"2024-05-27T10:10:36.805Z"}
+{"level":"info","message":"GET /health ::1","timestamp":"2024-05-27T10:11:20.870Z"}

@@ -1,4 +1,35 @@
-import {type Request, type Response, type NextFunction} from 'express'
+import  {type Request, type Response, type NextFunction} from 'express'
+import logger from './config';
+
+
+
+export class ErrorMiddleware extends Error {
+  status: number;
+  message: string;
+
+  constructor(status: number, message: string) {
+    super(message);
+    this.status = status;
+    this.message = message;
+  }
+   toJSON() {
+    return {
+      status: this.status,
+      message: this.message,
+    };
+  }
+}
+
+
+
+export const loggerMiddleware = (req: Request, res:Response, next: NextFunction) => {
+  logger.info(`${req.method} ${req.path} ${req.ip}`);
+  next();
+};
+
+
+
+
 
 const rateLimit = 20; 
 const interval = 60 * 1000; 
@@ -13,11 +44,11 @@ setInterval(() => {
   });
 }, interval)
 
-function rateLimitAndTimeout(req:Request, res:Response, next:NextFunction) {
+export function rateLimitAndTimeout(req:Request, res:Response, next:NextFunction) {
   const ip = req.ip; 
 
   if(!ip){
-    throw new Error('No IP provided')
+    throw new ErrorMiddleware(400, 'Invalid IP');
   }
 
   requestCounts[ip] = (requestCounts[ip] || 0) + 1;

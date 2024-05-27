@@ -1,7 +1,11 @@
 {
-  "name": ".",
+  "name": "Project_Listing_Microservice",
   "module": ".",
   "type": "module",
+  "scripts": {
+    "start": "bun run index.ts",
+    "dev": "bun --watch run index.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest",
     "@types/cors": "^2.8.17",
